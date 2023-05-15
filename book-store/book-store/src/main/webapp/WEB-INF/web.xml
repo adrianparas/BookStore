@@ -9,20 +9,29 @@
   </welcome-file-list>
 
   <servlet>
-    <servlet-name>com.snva.BookServlet</servlet-name>
+    <servlet-name>BookServlet</servlet-name>
     <servlet-class>com.snva.BookServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>com.snva.BookServlet</servlet-name>
+    <servlet-name>BookServlet</servlet-name>
     <url-pattern>/addBook</url-pattern>
   </servlet-mapping>
 
    <servlet>
-    <servlet-name>com.snva.HomeServlet</servlet-name>
+    <servlet-name>HomeServlet</servlet-name>
     <servlet-class>com.snva.HomeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>com.snva.HomeServlet</servlet-name>
+    <servlet-name>HomeServlet</servlet-name>
     <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeleteBookServlet</servlet-name>
+    <servlet-class>com.snva.DeleteBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteBookServlet</servlet-name>
+    <url-pattern>/deleteBook</url-pattern>
   </servlet-mapping>
 </web-app>

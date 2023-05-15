@@ -25,6 +25,12 @@
                     <td>${book.getTitle()}</td>
                     <td>${book.getAuthor()}</td>
                     <td>$${book.getPrice()}</td>
+                    <td>
+                        <form method="post" action="deleteBook">
+                            <input type="hidden" name="bookTitle" value="${book.getTitle()}">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

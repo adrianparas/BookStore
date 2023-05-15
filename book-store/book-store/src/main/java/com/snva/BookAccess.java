@@ -26,5 +26,16 @@ public class BookAccess {
         }
         return books;
     }
+
+    public static void deleteBook(String title, Connection connection) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM book WHERE title = ?");
+            ps.setString(1, title);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
 }
