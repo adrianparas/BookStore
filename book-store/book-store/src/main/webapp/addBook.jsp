@@ -12,8 +12,8 @@
     <br>
     <form method="post" action="addBook">
         <h2>New Book Form</h2>
-        Title: <input type="text" name="bookTitle" required><br><br>
-        Author: <input type="text" name="bookAuthor" required><br><br>
+        Title: <input type="text" name="bookTitle" autocomplete="off" required><br><br>
+        Author: <input type="text" name="bookAuthor" autocomplete="off" required><br><br>
         Price: <input type="number" step="0.01" name="bookPrice" required><br><br>
         <input type="submit">
         &emsp; <a href="bookInfo.jsp">Home</a>

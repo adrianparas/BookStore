@@ -20,16 +20,16 @@ public class BookServlet extends HttpServlet {
         String name = request.getParameter("bookTitle");
         String author = request.getParameter("bookAuthor");
         double price = Double.parseDouble(request.getParameter("bookPrice"));
-        ArrayList<Book> books = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DatasourceAccess.getDataSource().getConnection();
             addBook(name, author, price, connection);
-            books = BookAccess.getAllBooks(connection);
+            session.setAttribute("bookList", BookAccess.getAllBooks(connection));
+            connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } 
-        session.setAttribute("bookList", books);
+        
         response.sendRedirect("bookInfo.jsp");
     }
 
