@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class BookServlet extends HttpServlet {
@@ -22,26 +21,13 @@ public class BookServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DatasourceAccess.getDataSource().getConnection();
-            addBook(title, author, price, connection);
-            session.setAttribute("bookList", BookAccess.getAllBooks(connection));
+            BookDAO.addBook(title, author, price, connection);
+            session.setAttribute("bookList", BookDAO.getAllBooks(connection));
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }  
         response.sendRedirect("bookInfo.jsp");
-    }
-
-    public void addBook(String title, String author, double price, Connection connection) throws SQLException {
-        try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO book (title, author, price) VALUES (?, ?, ?)");
-            ps.setString(1, title);
-            ps.setString(2, author);
-            ps.setDouble(3, price);
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 

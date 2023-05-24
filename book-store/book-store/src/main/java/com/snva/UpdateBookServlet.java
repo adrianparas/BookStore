@@ -21,8 +21,8 @@ public class UpdateBookServlet extends HttpServlet {
         double price = Double.parseDouble(request.getParameter("bookPrice"));
         try {
             Connection connection = DatasourceAccess.getDataSource().getConnection();
-            BookAccess.updateBook(newTitle, oldTitle, author, price, connection);
-            session.setAttribute("bookList", BookAccess.getAllBooks(connection));
+            BookDAO.updateBook(newTitle, oldTitle, author, price, connection);
+            session.setAttribute("bookList", BookDAO.getAllBooks(connection));
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

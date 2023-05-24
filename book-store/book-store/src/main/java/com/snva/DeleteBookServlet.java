@@ -16,8 +16,8 @@ public class DeleteBookServlet extends HttpServlet {
         String title = request.getParameter("bookTitle");
         try {
             Connection connection = DatasourceAccess.getDataSource().getConnection();
-            BookAccess.deleteBook(title, connection);
-            session.setAttribute("bookList", BookAccess.getAllBooks(connection));
+            BookDAO.deleteBook(title, connection);
+            session.setAttribute("bookList", BookDAO.getAllBooks(connection));
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class BookAccess {
+public class BookDAO {
     public static ArrayList<Book> getAllBooks(Connection connection) {
         ArrayList<Book> books = new ArrayList<>();
         try {
@@ -25,6 +25,19 @@ public class BookAccess {
             e.printStackTrace();
         }
         return books;
+    }
+
+    public static void addBook(String title, String author, double price, Connection connection) throws SQLException {
+        try {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO book (title, author, price) VALUES (?, ?, ?)");
+            ps.setString(1, title);
+            ps.setString(2, author);
+            ps.setDouble(3, price);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void deleteBook(String title, Connection connection) {

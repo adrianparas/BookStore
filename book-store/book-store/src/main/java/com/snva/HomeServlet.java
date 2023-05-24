@@ -16,7 +16,7 @@ public class HomeServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DatasourceAccess.getDataSource().getConnection();
-            session.setAttribute("bookList", BookAccess.getAllBooks(connection));
+            session.setAttribute("bookList", BookDAO.getAllBooks(connection));
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
