@@ -1,4 +1,5 @@
 com\snva\BookServlet.class
+com\snva\UpdateBookServlet.class
 com\snva\HomeServlet.class
 com\snva\BookAccess.class
 com\snva\DeleteBookServlet.class

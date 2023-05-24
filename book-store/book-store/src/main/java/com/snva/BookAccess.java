@@ -37,5 +37,19 @@ public class BookAccess {
             e.printStackTrace();
         }
     }
+
+    public static void updateBook(String newTitle, String oldTitle, String author, double price, Connection connection) throws SQLException {
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE book SET title = ?, author = ?, price = ? WHERE title = ?");
+            ps.setString(1, newTitle);
+            ps.setString(2, author);
+            ps.setDouble(3, price);
+            ps.setString(4, oldTitle);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
 }

@@ -19,6 +19,7 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Price</th>
+                <th colspan="2">Action</th>
             </tr>          
             <c:forEach items="${bookList}" var="book">
                 <tr>
@@ -29,6 +30,12 @@
                         <form method="post" action="deleteBook">
                             <input type="hidden" name="bookTitle" value="${book.getTitle()}">
                             <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="updateBook.jsp">
+                            <input type="hidden" name="bookTitle" value="${book.getTitle()}">
+                            <input type="submit" value="Edit">
                         </form>
                     </td>
                 </tr>

@@ -1,7 +1,6 @@
 package com.snva;
 
 import java.io.*;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,33 +16,32 @@ public class BookServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession(true);
-        String name = request.getParameter("bookTitle");
+        String title = request.getParameter("bookTitle");
         String author = request.getParameter("bookAuthor");
         double price = Double.parseDouble(request.getParameter("bookPrice"));
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DatasourceAccess.getDataSource().getConnection();
-            addBook(name, author, price, connection);
+            addBook(title, author, price, connection);
             session.setAttribute("bookList", BookAccess.getAllBooks(connection));
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-        } 
-        
+        }  
         response.sendRedirect("bookInfo.jsp");
     }
 
-    public void addBook(String name, String author, double price, Connection connection) throws SQLException {
-            try {
-                PreparedStatement ps = connection.prepareStatement("INSERT INTO book (title, author, price) VALUES (?, ?, ?)");
-                ps.setString(1, name);
-                ps.setString(2, author);
-                ps.setDouble(3, price);
-                ps.executeUpdate();
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public void addBook(String title, String author, double price, Connection connection) throws SQLException {
+        try {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO book (title, author, price) VALUES (?, ?, ?)");
+            ps.setString(1, title);
+            ps.setString(2, author);
+            ps.setDouble(3, price);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
