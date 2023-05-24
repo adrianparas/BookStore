@@ -2,7 +2,6 @@ package com.snva;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -29,7 +28,5 @@ public class UpdateBookServlet extends HttpServlet {
         }
         response.sendRedirect("bookInfo.jsp");
     }
-
-    
     
 }

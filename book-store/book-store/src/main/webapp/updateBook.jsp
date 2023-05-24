@@ -26,9 +26,9 @@
     %>
     <form method="post" action="updateBook">
         <input type="hidden" name="oldBookTitle" value="${bookTitle}">
-        Title: <input type="text" name="newBookTitle" required><br><br>
-        Author: <input type="text" name="bookAuthor" required><br><br>
-        Price: <input type="number" step="0.01" name="bookPrice" required><br><br>
+        Title: <input type="text" name="newBookTitle" autocomplete="off" required><br><br>
+        Author: <input type="text" name="bookAuthor" autocomplete="off" required><br><br>
+        Price: <input type="number" step="0.01" name="bookPrice" autocomplete="off" required><br><br>
         <input type="submit" value="Update">
     </form>
     <br>

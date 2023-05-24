@@ -1,0 +1,22 @@
+h1, #newBook, #noBooks, a {
+    color: forestgreen;
+}
+
+table {
+    width: 35%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
