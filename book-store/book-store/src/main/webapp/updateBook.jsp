@@ -15,13 +15,6 @@
     <%-- Retrieve book details from the session --%>
     <%
         String bookTitle = request.getParameter("bookTitle");
-        Book book = null;
-        for (Book b : (ArrayList<Book>)session.getAttribute("bookList")) {
-            if (b.getTitle().equals(bookTitle)) {
-                book = b;
-                break;
-            }
-        }
         request.setAttribute("bookTitle", bookTitle);
     %>
     <form method="post" action="updateBook">
